@@ -74,6 +74,7 @@
 
 	
 	<div class="page-inner">
+
 	<nav class="gtco-nav" role="navigation">
 		<div class="gtco-container">
 			
@@ -125,23 +126,24 @@
 									</ul>
 									<div class="tab-content">
 										<div class="tab-content-inner active" data-content="signup">
-											<form action="#">
+											<form action="{% url 'register' %}" method="post">
 												<div class="row form-group">
 													<div class="col-md-12">
 														<label for="username">Username or Email</label>
-														<input type="text" class="form-control" id="username">
+														{% csrf_token %}
+														{{ new_user.username }}
 													</div>
 												</div>
 												<div class="row form-group">
 													<div class="col-md-12">
 														<label for="password">Password</label>
-														<input type="password" class="form-control" id="password">
+														{{ new_user.password }}
 													</div>
 												</div>
 												<div class="row form-group">
 													<div class="col-md-12">
 														<label for="password2">Repeat Password</label>
-														<input type="password" class="form-control" id="password2">
+														{{ new_user.password2 }}
 													</div>
 												</div>
 
@@ -154,17 +156,18 @@
 										</div>
 
 										<div class="tab-content-inner" data-content="login">
-											<form action="#">
+											<form action='login/' method="POST">
 												<div class="row form-group">
 													<div class="col-md-12">
 														<label for="username">Username or Email</label>
-														<input type="text" class="form-control" id="username">
+														{% csrf_token %}
+														{{ old_user.username }}
 													</div>
 												</div>
 												<div class="row form-group">
 													<div class="col-md-12">
 														<label for="password">Password</label>
-														<input type="password" class="form-control" id="password">
+														{{ old_user.password }}
 													</div>
 												</div>
 
